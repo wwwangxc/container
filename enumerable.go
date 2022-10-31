@@ -1,40 +1,5 @@
-Various data structures implemented using Go generics. 🤗
+package container
 
-## Support
-
-- [List](doc/list.md#list)
-  - [Array List](doc/list.md#array-list)
-
-## Global Ability
-
-### Container
-
-It is the base feature provided by all data structures.
-
-```go
-// Container is the base feature provided by all data structures
-type Container[T any] interface {
-	fmt.Stringer
-
-	// IsEmpty will return true when container has no element
-	IsEmpty() bool
-
-	// Size will return the number of elements in the container
-	Size() int
-
-	// Clear the elements inside the container
-	Clear()
-
-	// Values will return the collection of all element values in the container
-	Values() []T
-}
-```
-
-### Enumerable
-
-It provides enumerable functions for the containers.
-
-```go
 // Enumerable provides enumerable functions for the containers
 type Enumerable[T comparable, U any] interface {
 
@@ -65,4 +30,3 @@ type Enumerable[T comparable, U any] interface {
 	// It will return all elements for which the given function returns true
 	Select(func(T, U) bool) []U
 }
-```
