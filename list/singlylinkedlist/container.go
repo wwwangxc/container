@@ -1,4 +1,4 @@
-package arraylist
+package singlylinkedlist
 
 import (
 	"fmt"
@@ -22,26 +22,28 @@ func (l *List[T]) Size() int {
 // Clear the elements inside the container
 func (l *List[T]) Clear() {
 	l.size = 0
-	l.elements = []T{}
+	l.head = nil
+	l.tail = nil
 }
 
 // Values will return the collection of all element values in the container
 func (l *List[T]) Values() []T {
-	if l.size == 0 {
-		return []T{}
-	}
+	values := make([]T, 0, l.size)
+	l.Each(func(_ int, value T) bool {
+		values = append(values, value)
+		return true
+	})
 
-	elements := make([]T, l.size)
-	copy(elements, l.elements[:l.size])
-	return elements
+	return values
 }
 
-// String returns a string representation of array list
+// String returns a string representation of singly linked list
 func (l *List[T]) String() string {
 	valueStr := make([]string, 0, l.size)
-	for _, v := range l.Values() {
-		valueStr = append(valueStr, fmt.Sprintf("%v", v))
-	}
+	l.Each(func(_ int, value T) bool {
+		valueStr = append(valueStr, fmt.Sprintf("%v", value))
+		return true
+	})
 
-	return fmt.Sprintf("ArrayList[%s]", strings.Join(valueStr, ", "))
+	return fmt.Sprintf("SinglyLinkedList[%s]", strings.Join(valueStr, ", "))
 }

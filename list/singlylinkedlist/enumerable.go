@@ -1,6 +1,8 @@
-package arraylist
+package singlylinkedlist
 
-import "github.com/wwwangxc/container"
+import (
+	"github.com/wwwangxc/container"
+)
 
 var _ container.Enumerable[int, string] = (*List[string])(nil)
 
@@ -10,8 +12,9 @@ var _ container.Enumerable[int, string] = (*List[string])(nil)
 // Enter the next loop when it returns true
 // Break loop when it returns false
 func (l *List[T]) Each(f func(index int, value T) bool) {
-	for i, v := range l.elements {
-		if next := f(i, v); !next {
+	index := 0
+	for e := l.head; e != nil; e = e.next {
+		if next := f(index, e.value); !next {
 			break
 		}
 	}
@@ -29,7 +32,7 @@ func (l *List[T]) Any(f func(index int, value T) bool) bool {
 			return false
 		}
 
-		// enter the next loop
+		// enter the next loo;
 		return true
 	})
 
@@ -55,9 +58,9 @@ func (l *List[T]) All(f func(index int, value T) bool) bool {
 	return ok
 }
 
-// Find calls the given function once for each element
+// First calls the given function once for each element
 //
-// Return [index, value, true] when the given function return true
+// Return [index(or key), value, true] when the given function return true
 // for the first time
 func (l *List[T]) Find(f func(index int, value T) bool) (int, T, bool) {
 	index := -1
