@@ -10,36 +10,36 @@ import (
 var _ container.Container[string] = (*List[string])(nil)
 
 // IsEmpty will return true when container has no element
-func (a *List[T]) IsEmpty() bool {
-	return a.size == 0
+func (l *List[T]) IsEmpty() bool {
+	return l.size == 0
 }
 
 // Size will return the number of elements in the container
-func (a *List[T]) Size() int {
-	return a.size
+func (l *List[T]) Size() int {
+	return l.size
 }
 
 // Clear the elements inside the container
-func (a *List[T]) Clear() {
-	a.size = 0
-	a.elements = []T{}
+func (l *List[T]) Clear() {
+	l.size = 0
+	l.elements = []T{}
 }
 
 // Values will return the collection of all element values in the container
-func (a *List[T]) Values() []T {
-	if a.size == 0 {
+func (l *List[T]) Values() []T {
+	if l.size == 0 {
 		return []T{}
 	}
 
-	elements := make([]T, a.size)
-	copy(elements, a.elements[:a.size])
+	elements := make([]T, l.size)
+	copy(elements, l.elements[:l.size])
 	return elements
 }
 
 // String returns a string representation of array list
-func (a *List[T]) String() string {
-	valueStr := make([]string, 0, a.size)
-	for _, v := range a.Values() {
+func (l *List[T]) String() string {
+	valueStr := make([]string, 0, l.size)
+	for _, v := range l.Values() {
 		valueStr = append(valueStr, fmt.Sprintf("%v", v))
 	}
 

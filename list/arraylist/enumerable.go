@@ -62,13 +62,13 @@ func (l *List[T]) All(f func(index int, value T) bool) bool {
 func (l *List[T]) Find(f func(index int, value T) bool) (int, T, bool) {
 	index := -1
 	var value T
-	ok := false
+	exist := false
 
 	l.Each(func(i int, v T) bool {
-		if f(i, v) {
+		if ok := f(i, v); ok {
 			index = i
 			value = v
-			ok = true
+			exist = true
 
 			// break loop
 			return false
@@ -78,7 +78,7 @@ func (l *List[T]) Find(f func(index int, value T) bool) (int, T, bool) {
 		return true
 	})
 
-	return index, value, ok
+	return index, value, exist
 }
 
 // Select calls the given function once for each element
