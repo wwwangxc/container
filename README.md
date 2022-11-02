@@ -1,3 +1,7 @@
+[![OSCS Status](https://www.oscs1024.com/platform/badge/wwwangxc/container.svg?size=small)](https://www.murphysec.com/dr/aDgidkK7d72WfN9WRi)
+[![Go Report Card](https://goreportcard.com/badge/github.com/wwwangxc/container)](https://goreportcard.com/report/github.com/wwwangxc/container)
+[![GoDoc](https://pkg.go.dev/badge/github.com/wwwangxc/container?status.svg)](https://pkg.go.dev/github.com/wwwangxc/container)
+
 Various data structures implemented using Go generics. 🤗
 
 ## Support
@@ -40,7 +44,10 @@ type Enumerable[T comparable, U any] interface {
 
 	// Each calls the given function once for each element and passing that
 	// element's index(or key) and value
-	Each(func(T, U))
+	//
+	// Enter the next loop when it returns true
+	// Break loop when it returns false
+	Each(func(T, U) bool)
 
 	// Any calls the given function once for each element
 	//

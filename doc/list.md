@@ -90,8 +90,12 @@ func main() {
 
 	list = arraylist.New("a", "b", "c")
 
-	list.Each(func(index int, value string) {
+	list.Each(func(index int, value string) bool {
 		fmt.Printf("Index: %d, Value: %s", index, value)
+
+    // return true -> enter next loop
+    // return false -> break loop
+    return true
 	})
 
 	// return true
