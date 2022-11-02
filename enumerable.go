@@ -5,7 +5,10 @@ type Enumerable[T comparable, U any] interface {
 
 	// Each calls the given function once for each element and passing that
 	// element's index(or key) and value
-	Each(func(T, U))
+	//
+	// Enter the next loop when it returns true
+	// Break loop when it returns false
+	Each(func(T, U) bool)
 
 	// Any calls the given function once for each element
 	//
