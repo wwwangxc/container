@@ -8,6 +8,7 @@ Various data structures implemented using Go generics. 🤗
 
 - [List](doc/list.md#list)
   - [Array List](doc/list.md#array-list)
+  - [Singly Linked List](doc/list.md#singly-linked-list)
 
 ## Global Ability
 
