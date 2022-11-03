@@ -93,9 +93,9 @@ func main() {
 	list.Each(func(index int, value string) bool {
 		fmt.Printf("Index: %d, Value: %s", index, value)
 
-    // return true -> enter next loop
-    // return false -> break loop
-    return true
+		// return true -> enter next loop
+		// return false -> break loop
+		return true
 	})
 
 	// return true
@@ -118,5 +118,82 @@ func main() {
 		return value == "a"
 	})
 }
+```
 
+## Singly Linked List
+
+Singly linked lists contain nodes which have a 'value' field as well as 'next' field, which points to the next node in line of nodes.
+Operations that can be performed on singly linked lists include insertion, deletion and traversal.
+
+Implements [Container](../README.md#container)、[Enumerable](../README.md#enumerable)、[List](#list) interface.
+
+Wiki: [https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list](https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list)
+
+Usage by:
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/wwwangxc/container/list/singlylinkedlist"
+)
+
+func main() {
+	list := singlylinkedlist.New("a", "b", "c") // ["a", "b", "c"]
+	_, _ = list.Get(0)                          // "a", true
+	_, _ = list.Get(3)                          // "", false
+	_ = list.Contains("a")                      // true
+	_ = list.Contains("d")                      // false
+	_ = list.IndexOf("a")                       // 0
+	_ = list.IndexOf("d")                       // -1
+	list.Append("d", "e")                       // ["a", "b", "c", "d", "e"]
+	list.Remove(3)                              // ["a", "b", "c", "e"]
+	list.Remove(3)                              // ["a", "b", "c"]
+	list.Insert(3, "f", "g")                    // ["a", "b", "c", "f", "g"]
+	list.Remove(3)                              // ["a", "b", "c", "f"]
+	list.Remove(3)                              // ["a", "b", "c"]
+	list.Insert(0, "h", "i")                    // ["h", "i", "a", "b", "c"]
+	list.Set(0, "z")                            // ["z", "i", "a", "b", "c"]
+	list.Set(5, "z")                            // ["z", "i", "a", "b", "c", "z"]
+	list.SortBy(func(i, j string) bool {        // ["a", "b", "c", "i", "z", "z"]
+		return i < j
+	})
+	_ = list.IsEmpty() // false
+	_ = list.Size()    // 6
+	_ = list.Values()  // ["a", "b", "c", "i", "z", "z"]
+	_ = list.String()  // ArrayList[a, b, c, i, z, z]
+	list.Clear()       // []
+
+	list = singlylinkedlist.New("a", "b", "c")
+
+	list.Each(func(index int, value string) bool {
+		fmt.Printf("Index: %d, Value: %s", index, value)
+
+		// return true -> enter next loop
+		// return false -> break loop
+		return true
+	})
+
+	// return true
+	_ = list.Any(func(index int, value string) bool {
+		return value == "a"
+	})
+
+	// return false
+	_ = list.All(func(index int, value string) bool {
+		return value == "a"
+	})
+
+	// return 0, "a", true
+	_, _, _ = list.Find(func(index int, value string) bool {
+		return value == "a"
+	})
+
+	// return ["a"]
+	_ = list.Select(func(index int, value string) bool {
+		return value == "a"
+	})
+}
 ```
