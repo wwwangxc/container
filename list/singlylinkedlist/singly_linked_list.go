@@ -22,21 +22,21 @@ func New[T comparable](values ...T) *List[T] {
 }
 
 // outOfRange check if index is out of range
-func (a *List[T]) outOfRange(index int) bool {
-	return index < 0 || index >= a.size
+func (l *List[T]) outOfRange(index int) bool {
+	return index < 0 || index >= l.size
 }
 
 // append value into element list
-func (a *List[T]) append(value T) {
+func (l *List[T]) append(value T) {
 	e := &element[T]{value: value}
 
-	if a.size == 0 {
-		a.head = e
-		a.tail = e
+	if l.size == 0 {
+		l.head = e
+		l.tail = e
 	} else {
-		a.tail.next = e
-		a.tail = e
+		l.tail.next = e
+		l.tail = e
 	}
 
-	a.size++
+	l.size++
 }
