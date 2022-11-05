@@ -12,8 +12,9 @@ var _ container.Enumerable[int, string] = (*List[string])(nil)
 // Enter the next loop when it returns true
 // Break loop when it returns false
 func (l *List[T]) Each(f func(index int, value T) bool) {
-	index := 0
+	index := -1
 	for e := l.head; e != nil; e = e.next {
+		index++
 		if next := f(index, e.value); !next {
 			break
 		}
