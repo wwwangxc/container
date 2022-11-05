@@ -59,38 +59,39 @@ package main
 import (
 	"fmt"
 
+	"github.com/wwwangxc/container/list"
 	"github.com/wwwangxc/container/list/arraylist"
 )
 
 func main() {
-	list := arraylist.New("a", "b", "c") // ["a", "b", "c"]
-	_, _ = list.Get(0)                   // "a", true
-	_, _ = list.Get(3)                   // "", false
-	_ = list.Contains("a")               // true
-	_ = list.Contains("d")               // false
-	_ = list.IndexOf("a")                // 0
-	_ = list.IndexOf("d")                // -1
-	list.Append("d", "e")                // ["a", "b", "c", "d", "e"]
-	list.Remove(3)                       // ["a", "b", "c", "e"]
-	list.Remove(3)                       // ["a", "b", "c"]
-	list.Insert(3, "f", "g")             // ["a", "b", "c", "f", "g"]
-	list.Remove(3)                       // ["a", "b", "c", "f"]
-	list.Remove(3)                       // ["a", "b", "c"]
-	list.Insert(0, "h", "i")             // ["h", "i", "a", "b", "c"]
-	list.Set(0, "z")                     // ["z", "i", "a", "b", "c"]
-	list.Set(5, "z")                     // ["z", "i", "a", "b", "c", "z"]
-	list.SortBy(func(i, j string) bool { // ["a", "b", "c", "i", "z", "z"]
+	array := list.NewArray("a", "b", "c") // ["a", "b", "c"]
+	_, _ = array.Get(0)                   // "a", true
+	_, _ = array.Get(3)                   // "", false
+	_ = array.Contains("a")               // true
+	_ = array.Contains("d")               // false
+	_ = array.IndexOf("a")                // 0
+	_ = array.IndexOf("d")                // -1
+	array.Append("d", "e")                // ["a", "b", "c", "d", "e"]
+	array.Remove(3)                       // ["a", "b", "c", "e"]
+	array.Remove(3)                       // ["a", "b", "c"]
+	array.Insert(3, "f", "g")             // ["a", "b", "c", "f", "g"]
+	array.Remove(3)                       // ["a", "b", "c", "f"]
+	array.Remove(3)                       // ["a", "b", "c"]
+	array.Insert(0, "h", "i")             // ["h", "i", "a", "b", "c"]
+	array.Set(0, "z")                     // ["z", "i", "a", "b", "c"]
+	array.Set(5, "z")                     // ["z", "i", "a", "b", "c", "z"]
+	array.SortBy(func(i, j string) bool { // ["a", "b", "c", "i", "z", "z"]
 		return i < j
 	})
-	_ = list.IsEmpty() // false
-	_ = list.Size()    // 6
-	_ = list.Values()  // ["a", "b", "c", "i", "z", "z"]
-	_ = list.String()  // ArrayList[a, b, c, i, z, z]
-	list.Clear()       // []
+	_ = array.IsEmpty() // false
+	_ = array.Size()    // 6
+	_ = array.Values()  // ["a", "b", "c", "i", "z", "z"]
+	_ = array.String()  // ArrayList[a, b, c, i, z, z]
+	array.Clear()       // []
 
-	list = arraylist.New("a", "b", "c")
+	array = arraylist.New("a", "b", "c")
 
-	list.Each(func(index int, value string) bool {
+	array.Each(func(index int, value string) bool {
 		fmt.Printf("Index: %d, Value: %s", index, value)
 
 		// return true -> enter next loop
@@ -99,22 +100,22 @@ func main() {
 	})
 
 	// return true
-	_ = list.Any(func(index int, value string) bool {
+	_ = array.Any(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return false
-	_ = list.All(func(index int, value string) bool {
+	_ = array.All(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return 0, "a", true
-	_, _, _ = list.Find(func(index int, value string) bool {
+	_, _, _ = array.Find(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return ["a"]
-	_ = list.Select(func(index int, value string) bool {
+	_ = array.Select(func(index int, value string) bool {
 		return value == "a"
 	})
 }
@@ -139,38 +140,39 @@ package main
 import (
 	"fmt"
 
+	"github.com/wwwangxc/container/list"
 	"github.com/wwwangxc/container/list/singlylinkedlist"
 )
 
 func main() {
-	list := singlylinkedlist.New("a", "b", "c") // ["a", "b", "c"]
-	_, _ = list.Get(0)                          // "a", true
-	_, _ = list.Get(3)                          // "", false
-	_ = list.Contains("a")                      // true
-	_ = list.Contains("d")                      // false
-	_ = list.IndexOf("a")                       // 0
-	_ = list.IndexOf("d")                       // -1
-	list.Append("d", "e")                       // ["a", "b", "c", "d", "e"]
-	list.Remove(3)                              // ["a", "b", "c", "e"]
-	list.Remove(3)                              // ["a", "b", "c"]
-	list.Insert(3, "f", "g")                    // ["a", "b", "c", "f", "g"]
-	list.Remove(3)                              // ["a", "b", "c", "f"]
-	list.Remove(3)                              // ["a", "b", "c"]
-	list.Insert(0, "h", "i")                    // ["h", "i", "a", "b", "c"]
-	list.Set(0, "z")                            // ["z", "i", "a", "b", "c"]
-	list.Set(5, "z")                            // ["z", "i", "a", "b", "c", "z"]
-	list.SortBy(func(i, j string) bool {        // ["a", "b", "c", "i", "z", "z"]
+	singly := list.NewSingly("a", "b", "c") // ["a", "b", "c"]
+	_, _ = singly.Get(0)                    // "a", true
+	_, _ = singly.Get(3)                    // "", false
+	_ = singly.Contains("a")                // true
+	_ = singly.Contains("d")                // false
+	_ = singly.IndexOf("a")                 // 0
+	_ = singly.IndexOf("d")                 // -1
+	singly.Append("d", "e")                 // ["a", "b", "c", "d", "e"]
+	singly.Remove(3)                        // ["a", "b", "c", "e"]
+	singly.Remove(3)                        // ["a", "b", "c"]
+	singly.Insert(3, "f", "g")              // ["a", "b", "c", "f", "g"]
+	singly.Remove(3)                        // ["a", "b", "c", "f"]
+	singly.Remove(3)                        // ["a", "b", "c"]
+	singly.Insert(0, "h", "i")              // ["h", "i", "a", "b", "c"]
+	singly.Set(0, "z")                      // ["z", "i", "a", "b", "c"]
+	singly.Set(5, "z")                      // ["z", "i", "a", "b", "c", "z"]
+	singly.SortBy(func(i, j string) bool {  // ["a", "b", "c", "i", "z", "z"]
 		return i < j
 	})
-	_ = list.IsEmpty() // false
-	_ = list.Size()    // 6
-	_ = list.Values()  // ["a", "b", "c", "i", "z", "z"]
-	_ = list.String()  // ArrayList[a, b, c, i, z, z]
-	list.Clear()       // []
+	_ = singly.IsEmpty() // false
+	_ = singly.Size()    // 6
+	_ = singly.Values()  // ["a", "b", "c", "i", "z", "z"]
+	_ = singly.String()  // ArrayList[a, b, c, i, z, z]
+	singly.Clear()       // []
 
-	list = singlylinkedlist.New("a", "b", "c")
+	singly = singlylinkedlist.New("a", "b", "c")
 
-	list.Each(func(index int, value string) bool {
+	singly.Each(func(index int, value string) bool {
 		fmt.Printf("Index: %d, Value: %s", index, value)
 
 		// return true -> enter next loop
@@ -179,22 +181,22 @@ func main() {
 	})
 
 	// return true
-	_ = list.Any(func(index int, value string) bool {
+	_ = singly.Any(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return false
-	_ = list.All(func(index int, value string) bool {
+	_ = singly.All(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return 0, "a", true
-	_, _, _ = list.Find(func(index int, value string) bool {
+	_, _, _ = singly.Find(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return ["a"]
-	_ = list.Select(func(index int, value string) bool {
+	_ = singly.Select(func(index int, value string) bool {
 		return value == "a"
 	})
 }
@@ -219,38 +221,39 @@ package main
 import (
 	"fmt"
 
+	"github.com/wwwangxc/container/list"
 	"github.com/wwwangxc/container/list/doublylinkedlist"
 )
 
 func main() {
-	list := doublylinkedlist.New("a", "b", "c") // ["a", "b", "c"]
-	_, _ = list.Get(0)                          // "a", true
-	_, _ = list.Get(3)                          // "", false
-	_ = list.Contains("a")                      // true
-	_ = list.Contains("d")                      // false
-	_ = list.IndexOf("a")                       // 0
-	_ = list.IndexOf("d")                       // -1
-	list.Append("d", "e")                       // ["a", "b", "c", "d", "e"]
-	list.Remove(3)                              // ["a", "b", "c", "e"]
-	list.Remove(3)                              // ["a", "b", "c"]
-	list.Insert(3, "f", "g")                    // ["a", "b", "c", "f", "g"]
-	list.Remove(3)                              // ["a", "b", "c", "f"]
-	list.Remove(3)                              // ["a", "b", "c"]
-	list.Insert(0, "h", "i")                    // ["h", "i", "a", "b", "c"]
-	list.Set(0, "z")                            // ["z", "i", "a", "b", "c"]
-	list.Set(5, "z")                            // ["z", "i", "a", "b", "c", "z"]
-	list.SortBy(func(i, j string) bool {        // ["a", "b", "c", "i", "z", "z"]
+	doubly := list.NewDoubly("a", "b", "c") // ["a", "b", "c"]
+	_, _ = doubly.Get(0)                    // "a", true
+	_, _ = doubly.Get(3)                    // "", false
+	_ = doubly.Contains("a")                // true
+	_ = doubly.Contains("d")                // false
+	_ = doubly.IndexOf("a")                 // 0
+	_ = doubly.IndexOf("d")                 // -1
+	doubly.Append("d", "e")                 // ["a", "b", "c", "d", "e"]
+	doubly.Remove(3)                        // ["a", "b", "c", "e"]
+	doubly.Remove(3)                        // ["a", "b", "c"]
+	doubly.Insert(3, "f", "g")              // ["a", "b", "c", "f", "g"]
+	doubly.Remove(3)                        // ["a", "b", "c", "f"]
+	doubly.Remove(3)                        // ["a", "b", "c"]
+	doubly.Insert(0, "h", "i")              // ["h", "i", "a", "b", "c"]
+	doubly.Set(0, "z")                      // ["z", "i", "a", "b", "c"]
+	doubly.Set(5, "z")                      // ["z", "i", "a", "b", "c", "z"]
+	doubly.SortBy(func(i, j string) bool {  // ["a", "b", "c", "i", "z", "z"]
 		return i < j
 	})
-	_ = list.IsEmpty() // false
-	_ = list.Size()    // 6
-	_ = list.Values()  // ["a", "b", "c", "i", "z", "z"]
-	_ = list.String()  // ArrayList[a, b, c, i, z, z]
-	list.Clear()       // []
+	_ = doubly.IsEmpty() // false
+	_ = doubly.Size()    // 6
+	_ = doubly.Values()  // ["a", "b", "c", "i", "z", "z"]
+	_ = doubly.String()  // ArrayList[a, b, c, i, z, z]
+	doubly.Clear()       // []
 
-	list = doublylinkedlist.New("a", "b", "c")
+	doubly = doublylinkedlist.New("a", "b", "c")
 
-	list.Each(func(index int, value string) bool {
+	doubly.Each(func(index int, value string) bool {
 		fmt.Printf("Index: %d, Value: %s", index, value)
 
 		// return true -> enter next loop
@@ -259,22 +262,22 @@ func main() {
 	})
 
 	// return true
-	_ = list.Any(func(index int, value string) bool {
+	_ = doubly.Any(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return false
-	_ = list.All(func(index int, value string) bool {
+	_ = doubly.All(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return 0, "a", true
-	_, _, _ = list.Find(func(index int, value string) bool {
+	_, _, _ = doubly.Find(func(index int, value string) bool {
 		return value == "a"
 	})
 
 	// return ["a"]
-	_ = list.Select(func(index int, value string) bool {
+	_ = doubly.Select(func(index int, value string) bool {
 		return value == "a"
 	})
 }
