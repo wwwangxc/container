@@ -4,7 +4,7 @@ import (
 	"github.com/wwwangxc/container"
 )
 
-var _ container.Enumerable[int, string] = (*List[string])(nil)
+var _ container.Enumerator[int, string] = (*List[string])(nil)
 
 // Each calls the given function once for each element and passing that
 // element's index and value

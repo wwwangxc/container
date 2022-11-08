@@ -31,6 +31,6 @@ type List[T any] interface {
 	// Container is the base feature provided by all data structures
 	Container[T]
 
-	// Enumerable provides enumerable functions for the containers
-	Enumerable[int, T]
+	// Enumerator provides enumerator functions for the containers
+	Enumerator[int, T]
 }

@@ -1,7 +1,7 @@
 package container
 
-// Enumerable provides enumerable functions for the containers
-type Enumerable[T comparable, U any] interface {
+// Enumerator provides enumerable functions for the containers
+type Enumerator[T comparable, U any] interface {
 
 	// Each calls the given function once for each element and passing that
 	// element's index(or key) and value
