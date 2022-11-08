@@ -37,8 +37,8 @@ type List[T any] interface {
 	// Container is the base feature provided by all data structures
 	Container[T]
 
-	// Enumerable provides enumerable functions for the containers
-	Enumerable[int, T]
+	// Enumerator provides enumerable functions for the containers
+	Enumerator[int, T]
 }
 
 ```
@@ -47,7 +47,7 @@ type List[T any] interface {
 
 Array is a data structure consisting of a collection of elements (values or variables), each identified by at least one array index.
 
-Implements [Container](../README.md#container)、[Enumerable](../README.md#enumerable)、[List](#list) interface.
+Implements [Container](../README.md#container)、[Enumerator](../README.md#enumerator)、[List](#list) interface.
 
 Wiki: [https://en.wikipedia.org/wiki/Array_(data_structure)](https://en.wikipedia.org/wiki/Array_(data_structure))
 
@@ -128,7 +128,7 @@ Operations that can be performed on singly linked lists include insertion, delet
 
 <p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg"/></p>
 
-Implements [Container](../README.md#container)、[Enumerable](../README.md#enumerable)、[List](#list) interface.
+Implements [Container](../README.md#container)、[Enumerator](../README.md#enumerator)、[List](#list) interface.
 
 Wiki: [https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list](https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list)
 
@@ -209,7 +209,7 @@ Each node contains three fields: two link fields (references to the previous and
 
 <p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Doubly-linked-list.svg"/></p>
 
-Implements [Container](../README.md#container)、[Enumerable](../README.md#enumerable)、[List](#list) interface.
+Implements [Container](../README.md#container)、[Enumerator](../README.md#enumerator)、[List](#list) interface.
 
 Wiki: [https://en.wikipedia.org/wiki/Doubly_linked_list](https://en.wikipedia.org/wiki/Doubly_linked_list)
 
