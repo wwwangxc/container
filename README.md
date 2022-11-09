@@ -10,6 +10,8 @@ Various data structures implemented using Go generics. 🤗
   - [Array List](doc/list.md#array-list)
   - [Singly Linked List](doc/list.md#singly-linked-list)
   - [Doubly Linked List](doc/list.md#doubly-linked-list)
+- [Set](doc/set.md#set)
+  - [Hash Set](doc/set.md#hash-set)
 
 ## Global Ability
 
