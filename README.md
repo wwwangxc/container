@@ -12,6 +12,8 @@ Various data structures implemented using Go generics. 🤗
   - [Doubly Linked List](doc/list.md#doubly-linked-list)
 - [Set](doc/set.md#set)
   - [Hash Set](doc/set.md#hash-set)
+- [Map](doc/map.md#map)
+  - [Linked Map](doc/map.md#linked-map)
 
 ## Global Ability
 
