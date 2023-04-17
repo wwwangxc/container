@@ -24,8 +24,8 @@ func (mh *MaxHeap[T]) Clear() {
 // Return all the elements of the heap
 func (mh *MaxHeap[T]) Values() []T {
     if mh.size == 0 {
-		return []T{}
-	}
+        return []T{}
+    }
 
 	elements := make([]T, mh.size)
 	copy(elements, mh.elements[:mh.size])

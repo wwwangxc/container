@@ -12,7 +12,7 @@ func NewMinHeap[T constraints.Ordered](elements ...T) container.Heap[T] {
 	return minheap.New(elements...)
 }
 
-// Return a nee maxheap
+// Return a new maxheap
 func NewMaxHeap[T constraints.Ordered](elements ...T) container.Heap[T] {
     return maxheap.New(elements...)
 }
