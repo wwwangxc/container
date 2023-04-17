@@ -1,4 +1,4 @@
-package minheap
+package maxheap
 
 import (
 	"fmt"
@@ -39,7 +39,7 @@ func TestSet_Values(t *testing.T) {
     mh.Add(40)
     mh.Add(21)
     _, _ = mh.Poll()
-    assert.ElementsMatch(t, []int{40, 21}, mh.Values())
+    assert.ElementsMatch(t, []int{21, 20}, mh.Values())
 }
 
 
@@ -60,10 +60,10 @@ func TestSet_Poll(t *testing.T) {
     mh.Add(20)
     ans, _ := mh.Poll()
     fmt.Println(ans)
-    assert.Equal(t, 12, ans)
+    assert.Equal(t, 20, ans)
     ans, _ = mh.Poll()
-    assert.NotEqual(t, 12, ans)
-    assert.Equal(t, 14, ans)
+    assert.NotEqual(t, 20, ans)
+    assert.Equal(t, 18, ans)
     _, _ = mh.Poll()
     _, _ = mh.Poll()
     _, err := mh.Poll()
@@ -78,7 +78,7 @@ func TestSet_Peek(t *testing.T) {
     mh.Add(20)
     ans, _ := mh.peek()
     fmt.Println(ans)
-    assert.Equal(t, 12, ans)
+    assert.Equal(t, 20, ans)
     mh.Clear()
     _, err := mh.Peek()
     assert.EqualError(t, err, "heap is empty")
@@ -139,7 +139,7 @@ func TestSet_RightChild(t *testing.T) {
     mh.Add(20)
 
     ans := mh.RightChild(0)
-    assert.Equal(t, 14, ans)
+    assert.Equal(t, 12, ans)
 }
 
 func TestSet_Parent(t *testing.T) {

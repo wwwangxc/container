@@ -1,4 +1,4 @@
-package minheap
+package maxheap
 
 import (
 	"errors"
@@ -7,36 +7,36 @@ import (
 )
 
 // Array implementation of heap
-type MinHeap[T constraints.Ordered] struct {
+type MaxHeap[T constraints.Ordered] struct {
     elements []T
     size int
 }
 
 // Returns a new MinHeap implementation
-func New[T constraints.Ordered](values ...T) *MinHeap[T] {
-    minhp := &MinHeap[T]{
+func New[T constraints.Ordered](values ...T) *MaxHeap[T] {
+    mxhp := &MaxHeap[T]{
         elements: make([]T, 0),
         size: 0,
     }
 
     // Add elements to the heap and heapify
     for _, item := range values {
-        minhp.elements = append(minhp.elements, item)
-        minhp.size++
-        minhp.heapifyUp()
+        mxhp.elements = append(mxhp.elements, item)
+        mxhp.size++
+        mxhp.heapifyUp()
     }
-    return minhp
+    return mxhp
 }
 
 // add a value to the heap
-func (mh *MinHeap[T]) add(value T) {
+func (mh *MaxHeap[T]) add(value T) {
     mh.elements = append(mh.elements, value)
     mh.size++
     mh.heapifyUp()
 }
 
-// remove and return the top (minimum) value in the heap
-func (mh *MinHeap[T]) poll() (T, error) {
+// remove and return the top (maximum) value in the heap
+func (mh *MaxHeap[T]) poll() (T, error) {
     if mh.IsEmpty() {
         return *new(T), errors.New("heap is empty")
     }
@@ -48,7 +48,7 @@ func (mh *MinHeap[T]) poll() (T, error) {
 }
 
 // peek at the top node
-func (mh *MinHeap[T]) peek() (T, error) {
+func (mh *MaxHeap[T]) peek() (T, error) {
     if mh.IsEmpty() {
         return *new(T), errors.New("heap is empty")
     }
@@ -57,17 +57,17 @@ func (mh *MinHeap[T]) peek() (T, error) {
 }
 
 // swap one element with another
-func (mh *MinHeap[T]) swap(idx1 int, idx2 int) {
+func (mh *MaxHeap[T]) swap(idx1 int, idx2 int) {
     temp := mh.elements[idx1]
     mh.elements[idx1] = mh.elements[idx2]
     mh.elements[idx2] = temp
 }
 
 // Put the last element to its correct position
-func (mh *MinHeap[T]) heapifyUp() {
+func (mh *MaxHeap[T]) heapifyUp() {
     index := mh.size - 1
 
-    for mh.HasParent(index) && mh.Parent(index) > mh.elements[index] {
+    for mh.HasParent(index) && mh.Parent(index) < mh.elements[index] {
         pIndex := mh.GetParentIndex(index)
         mh.swap(pIndex, index)
         index = pIndex
@@ -75,24 +75,22 @@ func (mh *MinHeap[T]) heapifyUp() {
 }
 
 // Put the first element to its correct position
-func (mh *MinHeap[T]) heapifyDown() {
+func (mh *MaxHeap[T]) heapifyDown() {
     index := 0
 
     for mh.HasLeftChild(index) {
-        smChildIdx := mh.GetLeftChildIndex(index)
-        if mh.HasRightChild(index) && mh.RightChild(index) < mh.LeftChild(index) {
-            smChildIdx = mh.GetRightChildIndex(index)
+        gtChildIdx := mh.GetLeftChildIndex(index)
+        if mh.HasRightChild(index) && mh.RightChild(index) > mh.LeftChild(index) {
+            gtChildIdx = mh.GetRightChildIndex(index)
         }
 
-        if mh.elements[index] > mh.elements[smChildIdx] {
-            mh.swap(index, smChildIdx)
+        if mh.elements[index] < mh.elements[gtChildIdx] {
+            mh.swap(index, gtChildIdx)
         } else {
             break
         }
-        index = smChildIdx
+        index = gtChildIdx
     }
-
-
 }
 
 
