@@ -14,5 +14,5 @@ func NewMinHeap[T constraints.Ordered](elements ...T) container.Heap[T] {
 
 // Return a new maxheap
 func NewMaxHeap[T constraints.Ordered](elements ...T) container.Heap[T] {
-    return maxheap.New(elements...)
+	return maxheap.New(elements...)
 }
