@@ -4,7 +4,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-// Heap is the base feature provided bu all heap structures
+// Heap is the base feature provided by all heap structures
 //
 // In computer science, a heap is a specialized tree-based data structure
 // which is essentially an almost complete binary tree that
