@@ -14,7 +14,9 @@ Various data structures implemented using Go generics. 🤗
   - [Hash Set](doc/set.md#hash-set)
 - [Map](doc/map.md#map)
   - [Linked Map](doc/map.md#linked-map)
-
+- [Heap](doc/heap.md#heap)
+  - [Min Heap](doc/heap.md#min-heap)
+  - [Max Heap](doc/heap.md#max-heap)
 ## Global Ability
 
 ### Container
